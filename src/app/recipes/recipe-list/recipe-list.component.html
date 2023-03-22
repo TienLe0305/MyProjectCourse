@@ -1,0 +1,48 @@
+<!-- <div class="row">
+    <div class="col-xs-12">
+        <button class="btn btn-success">New Recipe</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <a href="#" class="list-group-item clearfix" *ngFor="let recipe of recipes">
+            <div class="pull-left">
+                <h4 class="list-group-item-heading">{{recipe.name}}</h4>
+                <p class="list-group-item-text">{{recipe.description}}</p>
+            </div>
+            <span class="pull-right">
+                <img src="{{recipe.imagePath}}" alt="{{recipe.name}}" class="img-responsive" style="max-height: 50px;">
+            </span>
+        </a>
+        <app-recipe-item></app-recipe-item>
+    </div>
+</div> -->
+<!-- <div class="row">
+    <div class="col-12"> <button class="btn btn-success">New Recipe</button> </div>
+</div>
+<div class="row">
+    <div class="col-12"> <a href="#" class="list-group-item clearfix" *ngFor="let recipe of recipes">
+            <div class="float-start">
+                <h4 class="list-group-item-heading">{{recipe.name}}</h4>
+                <p class="list-group-item-text">{{recipe.description}}</p>
+            </div> <span class="float-end"> <img src="{{recipe.imagePath}}" alt="{{recipe.name}}" class="img-fluid"
+                    style="max-height: 50px;"> </span>
+        </a> <app-recipe-item></app-recipe-item> </div>
+</div> -->
+
+<div class="row pt-4">
+    <div class="col-12"> <button class="btn btn-success">New Recipe</button> </div>
+</div>
+<hr>
+<!-- <div class="d-flex"> -->
+<div *ngFor="let recipe of recipes">
+    <div class="card" style="width: 18rem;">
+        <img src="{{recipe.imagePath}}" class="card-img-top" alt="{{recipe.name}}">
+        <div class="card-body">
+            <h5 class="card-title">{{recipe.name}}</h5>
+            <p class="card-text">{{recipe.description}}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+</div>
+<!-- </div> -->
