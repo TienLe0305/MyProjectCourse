@@ -35,14 +35,12 @@
 </div>
 <hr>
 <!-- <div class="d-flex"> -->
-<div *ngFor="let recipe of recipes">
-    <div class="card" style="width: 18rem;">
-        <img src="{{recipe.imagePath}}" class="card-img-top" alt="{{recipe.name}}">
-        <div class="card-body">
-            <h5 class="card-title">{{recipe.name}}</h5>
-            <p class="card-text">{{recipe.description}}</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <app-recipe-item *ngFor="let recipeEl of recipes" [recipe]="recipeEl"
+            (recipeSelected)="onRecipeSelected(recipeEl)" class="list-group"></app-recipe-item>
     </div>
 </div>
+
 <!-- </div> -->

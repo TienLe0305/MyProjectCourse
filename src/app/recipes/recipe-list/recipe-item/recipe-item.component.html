@@ -1,1 +1,19 @@
-<!-- <p>recipe-item works!</p> -->
+<!-- <a href="#" class="list-group-item">
+    <div class="card" style="width: 18rem;">
+        <img src="{{recipe.imagePath}}" class="card-img-top" alt="{{recipe.name}}">
+        <div class="card-body">
+            <h5 class="card-title">{{recipe.name}}</h5>
+            <p class="card-text">{{recipe.description}}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+</a> -->
+
+<a href="#" class="list-group-item list-group-item-success d-flex justify-content-between align-items-center"
+    (click)="onSelected()">
+    <div>
+        <h4 class="mb-1">{{ recipe.name }}</h4>
+        <p class="mb-0">{{ recipe.description }}</p>
+    </div>
+    <img [src]="recipe.imagePath" alt="{{ recipe.name }}" class="img-fluid" style="max-height: 50px;">
+</a>
