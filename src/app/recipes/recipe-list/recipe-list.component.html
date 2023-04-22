@@ -31,15 +31,15 @@
 </div> -->
 
 <div class="row pt-4">
-    <div class="col-12"> <button class="btn btn-success">New Recipe</button> </div>
+    <div class="col-12"> <button class="btn btn-success" (click)="onNewRecipe()">New Recipe</button> </div>
 </div>
 <hr>
 <!-- <div class="d-flex"> -->
 
 <div class="row">
     <div class="col-xs-12">
-        <app-recipe-item *ngFor="let recipeEl of recipes" [recipe]="recipeEl"
-            (recipeSelected)="onRecipeSelected(recipeEl)" class="list-group"></app-recipe-item>
+        <app-recipe-item *ngFor="let recipeEl of recipes; let i = index" [recipe]="recipeEl" [index]="i"
+            class="list-group"></app-recipe-item>
     </div>
 </div>
 

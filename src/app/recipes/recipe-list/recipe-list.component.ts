@@ -1,5 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Recipe } from '../recipe.model';
+import { RecipeService } from '../recipe.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-recipe-list',
@@ -7,22 +10,30 @@ import { Recipe } from '../recipe.model';
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit {
-  @Output() recipeWasSelected = new EventEmitter<Recipe>();
-  recipes: Recipe[] = [
-    new Recipe('A Test Recipe', 'This is simply a test', 'https://lh3.googleusercontent.com/3MTaO0OfMwrDKcuhwDjHzKKdO-_daDhCPCqmFfSZSkQC5oXq60Ogpd6I57zjE-ZSsCrom1Wrw4i305jccSlbNXMQ1oaI7AVvMA=w1667-h1667-c-rj-v1-e365'),
-    new Recipe('A Test Recipe2', 'This is simply a test2', 'https://lh3.googleusercontent.com/3MTaO0OfMwrDKcuhwDjHzKKdO-_daDhCPCqmFfSZSkQC5oXq60Ogpd6I57zjE-ZSsCrom1Wrw4i305jccSlbNXMQ1oaI7AVvMA=w1667-h1667-c-rj-v1-e365')
-  ];
+  recipes: Recipe[];
+  subscription: Subscription;
   
-  
-  
-  constructor() {
+  constructor(private recipeService: RecipeService,
+              private router: Router,
+              private route: ActivatedRoute) {
 
   }
   ngOnInit(): void {
+     this.subscription = this.recipeService.recipesChanged.subscribe(
+        (recipes: Recipe[]) => {
+          this.recipes = recipes
+        }
+      );
+      this.recipes = this.recipeService.getRecipes();
+  }
+
+  onNewRecipe() {
+    this.router.navigate(['new'], {relativeTo: this.route})
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
     
   }
 
-  onRecipeSelected(recipe: Recipe) {
-    this.recipeWasSelected.emit(recipe);
-  }
 }
